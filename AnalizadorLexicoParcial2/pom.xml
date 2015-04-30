@@ -27,9 +27,10 @@
             </plugin>
         </plugins>
         <resources>
-            <resource>
+           <!-- <resource>
                 <directory>src/main/resources</directory>
             </resource>
+            -->
         </resources>
     </build>
     
