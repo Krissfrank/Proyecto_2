@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.FileReader;
+import java.io.FileReader;
 %%
 %public
 %class Lexer
@@ -12,31 +12,25 @@ import java.util.FileReader;
 
 %{
     public List<String> analizar(String archivo){
-        File Reader in = null;
+        FileReader in = null;
         try{
-                in = new FileReader(archivo);
-                Lexer lexer = new Lexer(in);
-                while(!lexer.zzAtEOF)
-                     {
-                        lexer.yylex();
-                     }
-            }catch(Exeption ex)
-                {
-                    System.out.println("Error al analizar el archivo.");
-                }finally
-                    {
-
-try{
-    in.close();
-    }catch(Exception ex){
-         System.out.printf("Error al cerrar el archivo");
-
-}
-                        
-                    }return tokens;
-                }
+            in = new FileReader(archivo);
+            Lexer lexer = new Lexer(in);
+            while(!lexer.zzAtEOF){
+                lexer.yylex();
+            }
+        }catch(Exception ex){
+            System.out.println("Error al analizar el archivo.");
+        }finally{
+            try{
+                in.close();
+            }catch(Exception ex){
+                System.out.println("Error al cerrar el archivo.");
+            }
+        }return tokens;
+    }
 %}
-  
+
 %%
-[A-Za-Z][a-zA-Z]* {tokens.add(""); System.out.println("Variable");}                
+
 ":-" {tokens.add(":-"); System.out.println("Implica");}                
