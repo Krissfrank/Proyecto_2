@@ -36,4 +36,7 @@ try{
                     }return tokens;
                 }
 %}
-                    
+  
+%%
+[A-Za-Z][a-zA-Z]* {tokens.add(""); System.out.println("Variable");}                
+":-" {tokens.add(":-"); System.out.println("Implica");}                
