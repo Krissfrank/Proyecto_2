@@ -25,6 +25,13 @@ import java.util.FileReader;
                     System.out.println("Error al analizar el archivo.");
                 }finally
                     {
+
+try{
+    in.close();
+    }catch(Exception ex){
+         System.out.printf("Error al cerrar el archivo");
+
+}
                         
                     }return tokens;
                 }
