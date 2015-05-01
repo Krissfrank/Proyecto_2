@@ -34,7 +34,11 @@ import java.io.FileReader;
 %%
 
 
-[a-z][a-zA-Z0-9]+                               {tokens.add("atomo"); System.out.println("atomo C1");}
-[^(a-zA-Z0-9)]+                                   {tokens.add("atomo"); System.out.println("atomo C2");}
-"'"([a-zA-Z0-9]*|[^(a-zA-Z0-9)])*"'"                {tokens.add("atomo"); System.out.println("atomo C3");}
-":-"                                            {tokens.add(":-"); System.out.println("Implica");}                
+[a-z]([a-zA-Z0-9]|"_")*                               {tokens.add("atomo"); System.out.println("atomo C1");}
+[^(a-zA-Z0-9)]+                                       {tokens.add("atomo"); System.out.println("atomo C2");}
+"'"([a-zA-Z0-9]*|[^(a-zA-Z0-9)])*"'"                  {tokens.add("atomo"); System.out.println("atomo C3");}
+([A-Z]|"_")([a-zA-Z0-9]|"_")*                         {tokens.add("variable"); System.out.println("variable");}
+("+"|"-"|"")[0-9]*"."[0-9]+                           {tokens.add("puntoFijo"); System.out.println("puntoFijo");}
+":-"                                                  {tokens.add(":-"); System.out.println("implica");}
+("+"|"-"|"")[0-9]+("e"|"E")[0-9]+                     {tokens.add("puntoFloat"); System.out.println("puntoFloat");}
+\"([a-zA-Z0-9]|[^(a-zA-Z0-9)])+\"                     {tokens.add("cadena"); System.out.println("cadena");}
