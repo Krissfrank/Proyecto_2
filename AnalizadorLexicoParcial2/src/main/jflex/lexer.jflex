@@ -33,4 +33,8 @@ import java.io.FileReader;
 
 %%
 
-":-" {tokens.add(":-"); System.out.println("Implica");}                
+
+[a-z][a-zA-Z0-9]+                               {tokens.add("atomo"); System.out.println("atomo");}
+[^a-zA-Z0-9]+                                   {tokens.add("atomo"); System.out.println("atomo");}
+"'"[a-zA-Z0-9]+|[^a-zA-Z0-9]+"'"                {tokens.add("atomo"); System.out.println("atomo");}
+":-"                                            {tokens.add(":-"); System.out.println("Implica");}                
