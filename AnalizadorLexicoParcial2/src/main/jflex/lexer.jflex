@@ -33,7 +33,6 @@ import java.io.FileReader;
 
 %%
 
-
 [a-z]([a-zA-Z0-9]|"_")*                               {tokens.add("atomo"); System.out.println("atomo C1");}
 [^(a-zA-Z0-9)]+                                       {tokens.add("atomo"); System.out.println("atomo C2");}
 "'"([a-zA-Z0-9]*|[^(a-zA-Z0-9)])*"'"                  {tokens.add("atomo"); System.out.println("atomo C3");}
@@ -42,3 +41,10 @@ import java.io.FileReader;
 ":-"                                                  {tokens.add(":-"); System.out.println("implica");}
 ("+"|"-"|"")[0-9]+("e"|"E")[0-9]+                     {tokens.add("puntoFloat"); System.out.println("puntoFloat");}
 \"([a-zA-Z0-9]|[^(a-zA-Z0-9)])+\"                     {tokens.add("cadena"); System.out.println("cadena");}
+("+"|"-"|"")[0-9]+                                    {tokens.add("entero"); System.out.println("entero");}
+"["((([a-z]([a-zA-Z0-9]|"_")*)*?([^(a-zA-Z0-9)]+)*?("'"([a-zA-Z0-9]*|[^(a-zA-Z0-9)])*"'")*?(([A-Z]|"_")([a-zA-Z0-9]|"_")*)*?(("+"|"-"|"")[0-9]*"."[0-9]+ )*?(("+"|"-"|"")[0-9]+("e"|"E")[0-9]+)*?(([a-zA-Z0-9]|[^(a-zA-Z0-9)])+\")*?(("+"|"-"|"")[0-9]+)*)","*)+"]" {tokens.add("lista"); System.out.println("lista");}
+
+([a-z]([a-zA-Z0-9]|"_")*|[^(a-zA-Z0-9)]+|"'"([a-zA-Z0-9]*|[^(a-zA-Z0-9)])*"'")"("((([a-z]([a-zA-Z0-9]|"_")*)*?([^(a-zA-Z0-9)]+  )*?("'"([a-zA-Z0-9]*|[^(a-zA-Z0-9)])*"'")*?(([A-Z]|"_")([a-zA-Z0-9]|"_")*)*?(("+"|"-"|"")[0-9]*"."[0-9]+)*?(":-")*?(("+"|"-"|"")[0-9]+("e"|"E")[0-9]+)*?(\"([a-zA-Z0-9]|[^(a-zA-Z0-9)])+\")*?(("+"|"-"|"")[0-9]+)*?("["((([a-z]([a-zA-Z0-9]|"_")*)*?([^(a-zA-Z0-9)]+)*?("'"([a-zA-Z0-9]*|[^(a-zA-Z0-9)])*"'")*?(([A-Z]|"_")([a-zA-Z0-9]|"_")*)*?(("+"|"-"|"")[0-9]*"."[0-9]+ )*?(("+"|"-"|"")[0-9]+("e"|"E")[0-9]+)*?(([a-zA-Z0-9]|[^(a-zA-Z0-9)])+\")*?(("+"|"-"|"")[0-9]+)*)","*)+"]")*)","*)+")"  {tokens.add("predicado"); System.out.println("predicado");}
+
+
+
