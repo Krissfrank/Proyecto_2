@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.StringReader;
-import mx.uach.fing.compiladores.proyecto.analizadorlexicoparcial2.token;
+import mx.uach.fing.compiladores.proyecto.analizadorlexicoparcial2.Token;
 %%
 %public
 %class Lexer
@@ -14,7 +14,8 @@ import mx.uach.fing.compiladores.proyecto.analizadorlexicoparcial2.token;
 
 %{
     public static Lexer analizar(String input){
-        Lexer lexer = null;
+System.out.println("Token   Lexema");        
+Lexer lexer = null;
         try{
             StringReader in = new StringReader(input);
             lexer = new Lexer(in);
@@ -29,7 +30,7 @@ import mx.uach.fing.compiladores.proyecto.analizadorlexicoparcial2.token;
 %}
 %%
 
-[a-z]([a-zA-Z0-9]|"_")*                               {tokens.add(new Token("atomo", yytext())); System.out.println("atomo C1");}
+[a-z]([a-zA-Z0-9]|"_")*                               {tokens.add(new Token("atomo", yytext())); System.out.printf("%s %s%n", "atomo", yytext());}
 [^(a-zA-Z0-9)]+                                       {tokens.add(new Token("atomo", yytext())); System.out.println("atomo C2");}
 "'"([a-zA-Z0-9]*|[^(a-zA-Z0-9)])*"'"                  {tokens.add(new Token("atomo", yytext())); System.out.println("atomo C3");}
 ([A-Z]|"_")([a-zA-Z0-9]|"_")*                         {tokens.add(new Token("variable", yytext())); System.out.println("variable");}
